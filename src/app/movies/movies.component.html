@@ -1,0 +1,11 @@
+<a routerLink="favorites">Favorites</a>
+<label>
+    <input [(ngModel)]="searchTerm" />
+</label>
+<button (click)="search()">Search</button>
+<div *ngFor="let movie of movieService.movies">
+    {{movie.title}}
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"/> 
+    <button (click)="favorite(movie)">Watch later</button>
+</div>
+
