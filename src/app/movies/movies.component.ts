@@ -34,8 +34,12 @@ export class MoviesComponent implements OnInit {
   }
 
   favorite(movie: Movie){
-    this.movieService.favorites.push(movie);
+    
+    this.movieService.addFavorite(movie);
 
+  }
+  getFavorites(): void {
+    this.movieService.getFavorites();
   }
   search(): void {
     this.movieService.getMovies(this.searchTerm);

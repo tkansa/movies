@@ -25,7 +25,7 @@ export class MovieService {
   
   movieUrl: string = 'https://api.themoviedb.org/3/discover/movie?api_key=dbb4511f8917508e5ea2ffb2d6a01db5&sort_by=popularity.desc';
   searchUrl: string = 'https://api.themoviedb.org/3/search/movie?api_key=dbb4511f8917508e5ea2ffb2d6a01db5&language=en-US&query=';
-  favoritesUrl: string = '/api/favorites';
+  favoritesUrl: string = 'http://localhost:3000/api/favorites';
   public movies: Movie[] = [];
   public favorites : Movie[] = [];
 
@@ -52,5 +52,17 @@ export class MovieService {
     }
     
     
+  }
+
+  addFavorite(movie: Movie): void {
+    this.http.post(this.favoritesUrl, movie).subscribe(data => {
+      console.log(data)
+    });
+  }
+
+  getFavorites():void {
+    this.http.get(this.favoritesUrl).subscribe(data => {
+      console.log(data)
+    })
   }
 }
