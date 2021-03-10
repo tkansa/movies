@@ -1,4 +1,6 @@
-<img src="assets/ma.gif"/>
+<!-- <img src="assets/ma.gif"/> -->
 <h1>My favorites</h1>
-<div *ngFor="let favorite of movieService.favorites">{{favorite.title}}</div>
+<div *ngFor="let favorite of movieService.favorites">
+    {{favorite.title}}
+    <img [src]="'https://image.tmdb.org/t/p/w500' + favorite.poster_path"/> </div>
 <a routerLink="/">Home</a>

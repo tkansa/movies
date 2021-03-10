@@ -1,5 +1,7 @@
 # MovieApp
 
+Sample application which makes calls to a movie database API and allows the user to favorite movies and store them in a PostgreSQL database using Express on the back end.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
 
 ## Development server

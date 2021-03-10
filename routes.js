@@ -9,8 +9,7 @@ const pool = require("./connection");
 routes.get("/favorites", (req, res) => {
     
     pool.query("SELECT * FROM favorite_movies").then((results) => {
-        const favorites = results.rows;
-        res.json(favorites)
+        res.json(results.rows);
     })
     
 });
