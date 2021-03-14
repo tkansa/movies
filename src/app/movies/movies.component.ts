@@ -25,7 +25,11 @@ interface Movie {
 })
 export class MoviesComponent implements OnInit {
 
+  selectedQuantity: number = 1;
+
   searchTerm: string;
+
+  menuIsVisible: boolean = false;
 
   constructor(public movieService: MovieService) { }
 
@@ -34,15 +38,23 @@ export class MoviesComponent implements OnInit {
   }
 
   favorite(movie: Movie){
-    
     this.movieService.addFavorite(movie);
-
   }
+
   getFavorites(): void {
     this.movieService.getFavorites();
   }
+
   search(): void {
     this.movieService.getMovies(this.searchTerm);
+  }
+
+  toggleMenu():void{
+    this.menuIsVisible = !this.menuIsVisible;
+  }
+
+  logNum():void{
+    console.log(this.selectedQuantity);
   }
 
 }

@@ -1,6 +1,11 @@
 <!-- <img src="assets/ma.gif"/> -->
 <h1>My favorites</h1>
+<a routerLink="/">Home</a>
+<label>
+    <input [(ngModel)]="searchTerm" />
+</label>
+<button (click)="search()">Search Favorites</button>
 <div *ngFor="let favorite of movieService.favorites">
     {{favorite.title}}
-    <img [src]="'https://image.tmdb.org/t/p/w500' + favorite.poster_path"/> </div>
-<a routerLink="/">Home</a>
+    <img [src]="'https://image.tmdb.org/t/p/w500' + favorite.poster_path"/>
+</div>

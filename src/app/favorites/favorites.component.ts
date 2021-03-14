@@ -10,7 +10,11 @@ export class FavoritesComponent implements OnInit {
 
   constructor(public movieService: MovieService) { }
 
+  searchTerm: string;
   ngOnInit(): void {
+  }
+  search(){
+    this.movieService.searchFavorites(this.searchTerm);
   }
 
 }

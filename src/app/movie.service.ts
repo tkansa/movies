@@ -24,8 +24,8 @@ interface Movie {
 })
 export class MovieService {
   
-  movieUrl: string = 'https://api.themoviedb.org/3/discover/movie?api_key=*&sort_by=popularity.desc';
-  searchUrl: string = 'https://api.themoviedb.org/3/search/movie?api_key=*&language=en-US&query=';
+  movieUrl: string = 'https://api.themoviedb.org/3/discover/movie?api_key=dbb4511f8917508e5ea2ffb2d6a01db5&sort_by=popularity.desc';
+  searchUrl: string = 'https://api.themoviedb.org/3/search/movie?api_key=dbb4511f8917508e5ea2ffb2d6a01db5&language=en-US&query=';
   favoritesUrl: string = 'http://localhost:3000/api/favorites';
   public movies: Movie[] = [];
   public favorites : Movie[] = [];
@@ -62,6 +62,21 @@ export class MovieService {
     this.http.get(this.favoritesUrl).subscribe(
       (response: any) => {
       
+      for(let result of response){
+        let movie: Movie = { title: ""};
+        movie.title = result.title;
+        movie.poster_path = result.poster_path;
+        this.favorites.push(movie);
+      }
+    },
+    error => console.log(error)
+    )
+  }
+  
+  searchFavorites(searchTerm: string){
+    this.favorites = [];
+    this.http.get(this.favoritesUrl + "?searchTerm=" + searchTerm).subscribe(
+      (response: any) => {
       for(let result of response){
         let movie: Movie = { title: ""};
         movie.title = result.title;
